@@ -15,8 +15,17 @@ compose config = do
             "Invalid Configuration:" ++ err
 
         Right components ->
-            foldl1 (++) $ map renderComponent components
+            foldl1 combineComponents $ map renderComponent components
 
 
 renderComponent :: Component -> String
-renderComponent cmp = "<rendered " ++ name cmp ++ "@" ++ version cmp ++ ">"
+renderComponent cmp = "<rendered " ++ name cmp ++ "@" ++ version cmp ++ res ++ ">"
+    where res = fetchComponent (source cmp) (parameters cmp)
+
+
+fetchComponent :: String -> [Parameter] -> String
+fetchComponent source parameters = show parameters
+
+
+combineComponents :: String -> String -> String
+combineComponents = (++) . (++ "\n")
