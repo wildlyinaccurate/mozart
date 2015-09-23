@@ -1,0 +1,14 @@
+[
+    {
+        "name": "foo",
+        "version": "1.0.2",
+        "source": "https://api.reddit.com/r/earthporn/hot",
+        "parameters": []
+    },
+    {
+        "name": "bar",
+        "version": "0.9.21",
+        "source": "https://api.reddit.com/r/climbing/hot",
+        "parameters": [["limit", "10"]]
+    }
+]
