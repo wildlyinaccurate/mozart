@@ -5,26 +5,27 @@ module Mozart.Composition
 
 import Data.ByteString.Lazy (ByteString)
 import Mozart.Decoder
-import Mozart.Types
+import Mozart.Types as Mz
 
 
 compose :: ByteString -> String
-compose config = do
-    case decodeConfiguration config of
+compose sourceConfig = do
+    case decodeConfiguration sourceConfig of
         Left err ->
             "Invalid Configuration:" ++ err
 
-        Right components ->
-            foldl1 combineComponents $ map renderComponent components
+        Right config ->
+            foldl1 combineComponents $ map renderComponent (components config)
 
 
 renderComponent :: Component -> String
-renderComponent cmp = "<rendered " ++ name cmp ++ "@" ++ version cmp ++ res ++ ">"
-    where res = fetchComponent (source cmp) (parameters cmp)
+renderComponent = bodyInline . fetchComponent
 
 
-fetchComponent :: String -> [Parameter] -> String
-fetchComponent source parameters = show parameters
+fetchComponent :: Component -> Envelope
+fetchComponent cmp = do
+    Envelope [] bodyInline []
+  where bodyInline = "<rendered " ++ Mz.id cmp ++ "@" ++ version cmp ++ ">"
 
 
 combineComponents :: String -> String -> String

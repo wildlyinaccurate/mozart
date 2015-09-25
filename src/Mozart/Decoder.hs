@@ -9,7 +9,9 @@ import Data.Aeson (FromJSON, eitherDecode)
 import Mozart.Types
 
 
+instance FromJSON Configuration
 instance FromJSON Component
+instance FromJSON Meta
 
 
 decodeConfiguration :: ByteString -> Either String Configuration

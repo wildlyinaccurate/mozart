@@ -1,14 +1,19 @@
-[
-    {
-        "name": "foo",
-        "version": "1.0.2",
-        "source": "https://api.reddit.com/r/earthporn/hot",
-        "parameters": []
+{
+    "meta": {
+        "title": "Hello, World!"
     },
-    {
-        "name": "bar",
-        "version": "0.9.21",
-        "source": "https://api.reddit.com/r/climbing/hot",
-        "parameters": [["limit", "10"]]
-    }
-]
+    "components": [
+        {
+            "id": "foo",
+            "version": "1.0.2",
+            "endpoint": "https://api.reddit.com/r/earthporn/hot",
+            "mandatory": true
+        },
+        {
+            "id": "bar",
+            "version": "0.9.21",
+            "endpoint": "https://api.reddit.com/r/climbing/hot",
+            "mandatory": true
+        }
+    ]
+}

@@ -10,13 +10,19 @@ data Envelope = Envelope
     , bodyLast :: [String]
     }
 
-type Configuration = [Component]
-
-data Component = Component
-    { name :: String
-    , version :: String
-    , source :: String
-    , parameters :: [Parameter]
+data Configuration = Configuration
+    { meta :: Meta
+    , components :: [Component]
     } deriving (Generic)
 
-type Parameter = (String, String)
+data Component = Component
+    { id :: String
+    , version :: String
+    , endpoint :: String
+    , mandatory :: Bool
+    } deriving (Generic)
+
+data Meta = Meta
+    { title :: Maybe String
+    , description :: Maybe String
+    } deriving (Generic)
