@@ -6,4 +6,5 @@ import Mozart.Composition
 main :: IO ()
 main = do
     input <- BS.getContents
-    putStrLn $ compose input
+    page <- compose input
+    putStrLn page

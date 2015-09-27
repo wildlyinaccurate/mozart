@@ -1,6 +1,7 @@
 module Mozart.Decoder
     (
       decodeConfiguration
+    , decodeEnvelope
     ) where
 
 
@@ -12,7 +13,12 @@ import Mozart.Types
 instance FromJSON Configuration
 instance FromJSON Component
 instance FromJSON Meta
+instance FromJSON Envelope
 
 
 decodeConfiguration :: ByteString -> Either String Configuration
-decodeConfiguration config = eitherDecode config
+decodeConfiguration = eitherDecode
+
+
+decodeEnvelope :: ByteString -> Either String Envelope
+decodeEnvelope = eitherDecode

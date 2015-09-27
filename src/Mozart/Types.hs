@@ -8,7 +8,7 @@ data Envelope = Envelope
     { head :: [String]
     , bodyInline :: String
     , bodyLast :: [String]
-    }
+    } deriving (Generic)
 
 data Configuration = Configuration
     { meta :: Meta

@@ -1,0 +1,7 @@
+{
+    "head": ["<link rel=\"stylesheet\" href=\"/styles/bar.css\">"],
+    "bodyInline": "<div class=\"bar\">
+    <p>This page was composed by Mozart.</p>
+</div>",
+    "bodyLast": ["<script src=\"/scripts/bar.js\"></script>"]
+}
