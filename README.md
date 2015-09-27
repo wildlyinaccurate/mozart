@@ -20,7 +20,7 @@ $ cat /path/to/the/configuration.json | bin/mozart
 
 ## Configuration Format
 
-A configuration file must be a list of component objects as JSON. See [test.json](test.json) for an example configuration.
+A configuration file must be a list of component objects as JSON. See [test/configuration.json](test/configuration.json) for an example configuration.
 
 ## huh?
 
