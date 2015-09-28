@@ -5,13 +5,11 @@
     "components": [
         {
             "id": "foo",
-            "version": "1.0.2",
             "endpoint": "http://127.0.0.1:8000/test/components/foo.json",
             "mandatory": true
         },
         {
             "id": "bar",
-            "version": "0.9.21",
             "endpoint": "http://127.0.0.1:8000/test/components/bar.json",
             "mandatory": true
         }

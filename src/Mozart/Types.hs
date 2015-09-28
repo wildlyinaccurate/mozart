@@ -17,7 +17,6 @@ data Configuration = Configuration
 
 data Component = Component
     { id :: String
-    , version :: String
     , endpoint :: String
     , mandatory :: Bool
     } deriving (Generic)
