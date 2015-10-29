@@ -1,7 +1,5 @@
 {
     "head": ["<link rel=\"stylesheet\" href=\"/styles/foo.css\">"],
-    "bodyInline": "<div class=\"foo\">
-    <h1>Hello, world!</h1>
-</div>",
-    "bodyLast": []
+    "bodyInline": "<div class=\"foo\">\n    <h1>Hello, world!</h1>\n</div>",
+    "bodyLast": ["<script src=\"/scripts/shared.js\"></script>"]
 }

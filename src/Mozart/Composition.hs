@@ -4,6 +4,8 @@ module Mozart.Composition
     ) where
 
 import Data.ByteString.Lazy (ByteString)
+import Data.List
+
 import Mozart.Decoder
 import Mozart.Types as Mz
 
@@ -22,17 +24,17 @@ compose sourceConfig = do
             return $ renderComponents envelopes
 
 
-combineComponents :: String -> String -> String
-combineComponents = (++) . (++ "\n")
-
-
 renderComponents :: [Envelope] -> String
 renderComponents envelopes = do
-    let heads = map (concat . Mz.head) envelopes
+    let heads = combineComponents Mz.head envelopes
     let contents = map bodyInline envelopes
-    let bodyLasts = map (concat . bodyLast) envelopes
+    let bodyLasts = combineComponents bodyLast envelopes
 
     concatMap (++ "\n") (concat [heads, contents, bodyLasts])
+
+
+combineComponents :: (Envelope -> [String]) -> [Envelope] -> [String]
+combineComponents f envelopes = nub $ concat $ map f envelopes
 
 
 fetchComponent :: Component -> IO Envelope
