@@ -1,6 +1,8 @@
-# Mozart
+<h1 align="center">Mozart</h1>
 
-[![Build Status](https://travis-ci.org/wildlyinaccurate/mozart.svg?branch=master)](https://travis-ci.org/wildlyinaccurate/mozart)
+<p align="center">
+  [![Build Status](https://travis-ci.org/wildlyinaccurate/mozart.svg?branch=master)](https://travis-ci.org/wildlyinaccurate/mozart)
+</p>
 
 ## Installation
 
