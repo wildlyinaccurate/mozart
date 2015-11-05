@@ -11,6 +11,7 @@ addons:
 language: c
 
 script:
+  - cabal update
   - cabal configure
   - cabal install
   - make
