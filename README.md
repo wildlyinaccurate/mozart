@@ -1,7 +1,9 @@
 <h1 align="center">Mozart</h1>
 
 <p align="center">
-  [![Build Status](https://travis-ci.org/wildlyinaccurate/mozart.svg?branch=master)](https://travis-ci.org/wildlyinaccurate/mozart)
+  <a href="https://travis-ci.org/wildlyinaccurate/mozart">
+    <img src="https://travis-ci.org/wildlyinaccurate/mozart.svg?branch=master">
+  </a>
 </p>
 
 ## Installation
