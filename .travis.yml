@@ -18,7 +18,7 @@ before_script:
 
 script:
   - cabal update
-  - cabal configure
+  - cabal sandbox init
   - cabal install
   - make
 
