@@ -1,5 +1,7 @@
 # Mozart
 
+[![Build Status](https://travis-ci.org/wildlyinaccurate/mozart.svg?branch=master)](https://travis-ci.org/wildlyinaccurate/mozart)
+
 ## Installation
 
 You'll need a recent version of GHC and Cabal.
