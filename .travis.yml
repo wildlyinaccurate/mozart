@@ -11,7 +11,9 @@ addons:
 language: c
 
 script:
-  cabal configure && cabal build && make
+  - cabal configure
+  - cabal install
+  - make
 
 before_install:
   - export PATH=/opt/ghc/7.10.3/bin:/opt/cabal/1.22/bin:$PATH
