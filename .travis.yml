@@ -10,14 +10,17 @@ addons:
 
 language: c
 
+before_install:
+  - export PATH=/opt/ghc/7.10.3/bin:/opt/cabal/1.22/bin:$PATH
+
+before_script:
+  - python -m SimpleHTTPServer 8000 &
+
 script:
   - cabal update
   - cabal configure
   - cabal install
   - make
 
-before_script:
-  - python -m SimpleHTTPServer 8000 &
-
-before_install:
-  - export PATH=/opt/ghc/7.10.3/bin:/opt/cabal/1.22/bin:$PATH
+after_script:
+  - pkill python
