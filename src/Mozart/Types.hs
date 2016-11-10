@@ -11,14 +11,13 @@ data Envelope = Envelope
     } deriving (Generic)
 
 data Configuration = Configuration
-    { meta :: Meta
-    , components :: [Component]
+    { contents :: [Component]
     } deriving (Generic)
 
 data Component = Component
     { id :: String
     , endpoint :: String
-    , mandatory :: Bool
+    , must_succeed :: Bool
     } deriving (Generic)
 
 data Meta = Meta

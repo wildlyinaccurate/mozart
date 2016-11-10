@@ -20,7 +20,7 @@ compose sourceConfig = do
             error $ "Invalid Configuration: " ++ err
 
         Right config -> do
-            envelopes <- mapM fetchComponent (components config)
+            envelopes <- mapM fetchComponent (contents config)
             return $ renderComponents envelopes
 
 

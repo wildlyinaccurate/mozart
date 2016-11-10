@@ -1,17 +1,14 @@
 {
-    "meta": {
-        "title": "Hello, World!"
-    },
-    "components": [
+    "contents": [
         {
             "id": "foo",
             "endpoint": "http://127.0.0.1:8000/test/components/foo.json",
-            "mandatory": true
+            "must_succeed": true
         },
         {
             "id": "bar",
             "endpoint": "http://127.0.0.1:8000/test/components/bar.json",
-            "mandatory": true
+            "must_succeed": true
         }
     ]
 }
