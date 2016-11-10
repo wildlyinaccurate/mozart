@@ -45,7 +45,7 @@ fetchComponent cmp = do
     body <- getResponseBody res
 
     case decodeEnvelope body of
-        Left err ->
+        Left _ ->
             error $ "Invalid response from " ++ uri
 
         Right envelope ->
