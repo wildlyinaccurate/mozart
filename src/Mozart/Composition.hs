@@ -28,10 +28,10 @@ compose sourceConfig = do
 renderComponents :: [Envelope] -> String
 renderComponents envelopes = do
     let heads = combineComponents Mz.head envelopes
-    let contents = map bodyInline envelopes
+    let bodyInlines = map bodyInline envelopes
     let bodyLasts = combineComponents bodyLast envelopes
 
-    concatMap (++ "\n") (concat [heads, contents, bodyLasts])
+    concatMap (++ "\n") (concat [heads, bodyInlines, bodyLasts])
 
 
 combineComponents :: (Envelope -> [String]) -> [Envelope] -> [String]
