@@ -3,6 +3,7 @@ module Mozart.Composition
       compose
     ) where
 
+import Control.Concurrent.Async
 import Data.ByteString.Lazy (ByteString)
 import Data.List
 
@@ -20,7 +21,7 @@ compose sourceConfig = do
             error $ "Invalid Configuration: " ++ err
 
         Right config -> do
-            envelopes <- mapM fetchComponent (contents config)
+            envelopes <- mapConcurrently fetchComponent (contents config)
             return $ renderComponents envelopes
 
 
