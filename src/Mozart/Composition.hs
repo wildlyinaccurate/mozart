@@ -26,12 +26,12 @@ compose sourceConfig = do
 
 
 renderComponents :: [Envelope] -> String
-renderComponents envelopes = do
-    let heads = combineComponents Mz.head envelopes
-    let bodyInlines = map bodyInline envelopes
-    let bodyLasts = combineComponents bodyLast envelopes
+renderComponents envelopes = concatMap (++ "\n") (concat [heads, bodyInlines, bodyLasts])
+    where
+        heads = combineComponents Mz.head envelopes
+        bodyInlines = map bodyInline envelopes
+        bodyLasts = combineComponents bodyLast envelopes
 
-    concatMap (++ "\n") (concat [heads, bodyInlines, bodyLasts])
 
 
 combineComponents :: (Envelope -> [String]) -> [Envelope] -> [String]
@@ -39,17 +39,18 @@ combineComponents f envelopes = nub $ concat $ map f envelopes
 
 
 fetchComponent :: Component -> IO Envelope
-fetchComponent cmp = do
+fetchComponent cmp =
     let uri = endpoint cmp
-    res <- simpleHTTP (makeLazyRequest uri)
-    body <- getResponseBody res
+    in do
+        res <- simpleHTTP (makeLazyRequest uri)
+        body <- getResponseBody res
 
-    case decodeEnvelope body of
-        Left _ ->
-            error $ "Invalid response from " ++ uri
+        case decodeEnvelope body of
+            Left _ ->
+                error $ "Invalid response from " ++ uri
 
-        Right envelope ->
-            return envelope
+            Right envelope ->
+                return envelope
 
 
 makeLazyRequest :: String -> Request ByteString
