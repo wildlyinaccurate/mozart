@@ -12,7 +12,6 @@ import Mozart.Types
 
 instance FromJSON Configuration
 instance FromJSON Component
-instance FromJSON Meta
 instance FromJSON Envelope
 
 

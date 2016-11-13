@@ -19,8 +19,3 @@ data Component = Component
     , endpoint :: String
     , must_succeed :: Bool
     } deriving (Generic)
-
-data Meta = Meta
-    { title :: Maybe String
-    , description :: Maybe String
-    } deriving (Generic)
