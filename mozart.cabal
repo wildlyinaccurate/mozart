@@ -22,9 +22,9 @@ executable mozart
   -- other-extensions:
   build-depends:
       async >=2.1 && <2.2
-    , base >=4.8 && <4.9
+    , base >=4.9 && <4.10
     , bytestring >= 0.10 && <0.11
-    , aeson >= 0.10 && <0.11
+    , aeson >= 0.11 && <0.12
     , HTTP >= 4000 && <5000
     , network-uri >= 2.6 && <2.7
   hs-source-dirs:      src
