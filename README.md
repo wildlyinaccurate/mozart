@@ -1,8 +1,8 @@
 <h1 align="center">Mozart</h1>
 
 <p align="center">
-  <a href="https://travis-ci.org/wildlyinaccurate/mozart">
-    <img src="https://travis-ci.org/wildlyinaccurate/mozart.svg?branch=master">
+  <a href="https://travis-ci.org/wildlyinaccurate/mozart-requester-hs">
+    <img src="https://travis-ci.org/wildlyinaccurate/mozart-requester-hs.svg?branch=master">
   </a>
 </p>
 
@@ -11,8 +11,8 @@
 You'll need a recent version of GHC and Cabal.
 
 ```
-$ git clone https://github.com/wildlyinaccurate/mozart.git
-$ cd mozart
+$ git clone https://github.com/wildlyinaccurate/mozart-requester-hs.git
+$ cd mozart-requester-hs
 $ cabal sandbox init
 $ cabal install
 $ cabal build
