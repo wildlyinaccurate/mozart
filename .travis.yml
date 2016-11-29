@@ -5,13 +5,13 @@ addons:
     sources:
       - hvr-ghc
     packages:
-      - cabal-install-1.22
-      - ghc-7.10.3
+      - cabal-install-1.24
+      - ghc-8.0.2
 
 language: c
 
 before_install:
-  - export PATH=/opt/ghc/7.10.3/bin:/opt/cabal/1.22/bin:$PATH
+  - export PATH=/opt/ghc/8.0.2/bin:/opt/cabal/1.24/bin:$PATH
 
 before_script:
   - python -m SimpleHTTPServer 8000 &
