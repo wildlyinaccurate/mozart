@@ -1,3 +1,5 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module Mozart.Composition
     (
       compose
@@ -7,15 +9,15 @@ import Control.Concurrent.Async
 import Data.ByteString.Lazy (ByteString)
 import Data.List
 
-import Mozart.Decoder
-import Mozart.Types as Mz
+import Mozart.Configuration
+import Mozart.Envelope as E
 
 import Network.HTTP
 import Network.URI (parseURI)
 
 
-compose :: ByteString -> IO String
-compose sourceConfig = do
+compose :: ByteString -> ByteString -> IO String
+compose sourceConfig template = do
     case decodeConfiguration sourceConfig of
         Left err ->
             error $ "Invalid Configuration: " ++ err
@@ -28,7 +30,7 @@ compose sourceConfig = do
 renderComponents :: [Envelope] -> String
 renderComponents envelopes = concatMap (++ "\n") (concat [heads, bodyInlines, bodyLasts])
     where
-        heads = combineComponents Mz.head envelopes
+        heads = combineComponents E.head envelopes
         bodyInlines = map bodyInline envelopes
         bodyLasts = combineComponents bodyLast envelopes
 
