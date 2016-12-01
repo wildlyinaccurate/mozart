@@ -1,13 +1,10 @@
-{-# LANGUAGE OverloadedStrings #-}
-
-module Mozart.Composition
-    (
-      compose
-    ) where
+module Mozart.Composition (compose) where
 
 import Control.Concurrent.Async
-import Data.ByteString.Lazy (ByteString)
+import qualified Data.ByteString.Lazy as BL
+import qualified Data.ByteString.Lazy.Char8 as CL
 import Data.List
+import Data.String.Utils (replace)
 
 import Mozart.Configuration
 import Mozart.Envelope as E
@@ -16,7 +13,7 @@ import Network.HTTP
 import Network.URI (parseURI)
 
 
-compose :: ByteString -> ByteString -> IO String
+compose :: BL.ByteString -> BL.ByteString -> IO String
 compose sourceConfig template = do
     case decodeConfiguration sourceConfig of
         Left err ->
@@ -24,16 +21,15 @@ compose sourceConfig template = do
 
         Right config -> do
             envelopes <- mapConcurrently fetchComponent (contents config)
-            return $ renderComponents envelopes
+            return $ renderComponents template envelopes
 
 
-renderComponents :: [Envelope] -> String
-renderComponents envelopes = concatMap (++ "\n") (concat [heads, bodyInlines, bodyLasts])
+renderComponents :: BL.ByteString -> [Envelope] -> String
+renderComponents template envelopes = replace "{{head}}" heads (replace "{{bodyInline}}" bodyInlines (replace "{{bodyLast}}" bodyLasts $ CL.unpack template))
     where
-        heads = combineComponents E.head envelopes
-        bodyInlines = map bodyInline envelopes
-        bodyLasts = combineComponents bodyLast envelopes
-
+        heads = concatMap (++ "") $ combineComponents E.head envelopes
+        bodyInlines = concatMap (++ "") $ map bodyInline envelopes
+        bodyLasts = concatMap (++ "") $ combineComponents bodyLast envelopes
 
 
 combineComponents :: (Envelope -> [String]) -> [Envelope] -> [String]
@@ -55,7 +51,7 @@ fetchComponent cmp =
                 return envelope
 
 
-makeLazyRequest :: String -> Request ByteString
+makeLazyRequest :: String -> Request BL.ByteString
 makeLazyRequest url =
     case parseURI url of
         Nothing -> error $ "Invalid component endpoint: " ++ url
