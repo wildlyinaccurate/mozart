@@ -25,11 +25,12 @@ compose sourceConfig template = do
 
 
 renderComponents :: BL.ByteString -> [Envelope] -> String
-renderComponents template envelopes = replace "{{head}}" heads (replace "{{bodyInline}}" bodyInlines (replace "{{bodyLast}}" bodyLasts $ CL.unpack template))
+renderComponents template envelopes = replaceVars $ CL.unpack template
     where
         heads = concatMap (++ "") $ combineComponents E.head envelopes
         bodyInlines = concatMap (++ "") $ map bodyInline envelopes
         bodyLasts = concatMap (++ "") $ combineComponents bodyLast envelopes
+        replaceVars = replace "{{head}}" heads . replace "{{bodyInline}}" bodyInlines . replace "{{bodyLast}}" bodyLasts
 
 
 combineComponents :: (Envelope -> [String]) -> [Envelope] -> [String]
