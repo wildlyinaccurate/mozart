@@ -2,7 +2,7 @@
 -- documentation, see http://haskell.org/cabal/users-guide/
 
 name:                mozart
-version:             0.1.0.0
+version:             0.2.0.0
 -- synopsis:
 -- description:
 homepage:            https://github.com/wildlyinaccurate/mozart
@@ -21,11 +21,12 @@ executable mozart
   -- other-modules:
   -- other-extensions:
   build-depends:
-      async >=2.1 && <2.2
-    , base >=4.9 && <4.10
-    , bytestring >= 0.10 && <0.11
-    , aeson >= 0.11 && <0.12
-    , HTTP >= 4000 && <5000
-    , network-uri >= 2.6 && <2.7
+      async >= 2.1 && < 2.2
+    , base >= 4.9 && < 4.10
+    , bytestring >= 0.10 && < 0.11
+    , aeson >= 0.11 && < 0.12
+    , HTTP >= 4000 && < 5000
+    , MissingH >= 1.4 && < 1.5
+    , network-uri >= 2.6 && < 2.7
   hs-source-dirs:      src
   default-language:    Haskell2010
